@@ -1,46 +1,42 @@
-import React from 'react';
+import React from "react";
 
 
 //the style for the title of the website
 const ssss = {
-    textAlign: 'center',
-    color: 'blue'
+    textAlign: "center",
+    color: "blue"
 };
 
 //function that returns the HTML code 
 const Login = () => {
-
-  
     return (
         <div>
 
-        <header >
+            <header >
     
-            <h1 style={ssss}>CPSC 471 Website for Group 76</h1>
+                <h1 style={ssss}>CPSC 471 Website for Group 76</h1>
     
-        </header>   
-        <form class = "form" style={{textAlign: 'center'}}>    
-            <section id="loginUser">
+            </header>   
+            <form className = "form" style={{textAlign: "center"}}>    
+                <section id="loginUser">
             
-                <label for="username">Username</label>
-                <input id="username" name="username" type="text" maxlength="20" minlength="5"/>
+                    <label htmlFor="username">Username</label>
+                    <input id="username" name="username" type="text" maxLength="20" minLength="5"/>
     
-            </section>
+                </section>
     
-            <section id="loginPass">
-                <label for="password">Password</label>
-                <input id="password" name="password" type="password" maxlength="20" minlength="5"/>
-            </section>
+                <section id="loginPass">
+                    <label htmlFor="password">Password</label>
+                    <input id="password" name="password" type="password" maxLength="20" minLength="5"/>
+                </section>
     
-            <section id="login">
-                <input type="submit" value="Login" />
-            </section>
-        </form>
+                <section id="login">
+                    <input type="submit" value="Login" />
+                </section>
+            </form>
     
         </div>
     );
-
-    
-}
+};
 
 export default Login;

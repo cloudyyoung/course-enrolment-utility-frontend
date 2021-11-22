@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Reg = () => {
     return(
@@ -8,6 +8,6 @@ const Reg = () => {
             </div>
         </nav>
     );
-}
+};
 
-export default Reg
+export default Reg;
