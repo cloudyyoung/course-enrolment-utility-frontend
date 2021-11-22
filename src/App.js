@@ -1,5 +1,4 @@
 
-
 import React from 'react';
 import Login from './Login.js';
 import Reg from './Reg.js';
@@ -17,7 +16,6 @@ function App() {
         </div>
       </div>
     );
-  
 }
 
 export default App;
