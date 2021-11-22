@@ -2,15 +2,22 @@ import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 function App() {
-  return (
-    
-    <div>
-      <header>
 
-        <h1>CPSC 471 Website</h1>
+  const ssss = {
+      textAlign: 'center',
+      color: 'blue'
+  };
+
+  return (
+ 
+    <div>
+
+      <header >
+
+        <h1 style={ssss}>CPSC 471 Website</h1>
 
       </header>   
-      <form class = "form">    
+      <form class = "form" style={ssss}>    
         <section id="loginUser">
           
           <label for="username">Username</label>
@@ -27,6 +34,7 @@ function App() {
           <input type="submit" value="Login" />
         </section>
       </form>
+
     </div>
 
   );
