@@ -15,7 +15,7 @@ const Login = () => {
 
         <header >
     
-            <h1 style={ssss}>CPSC 471 Website</h1>
+            <h1 style={ssss}>CPSC 471 Website for Group 76</h1>
     
         </header>   
         <form class = "form" style={{textAlign: 'center'}}>    
