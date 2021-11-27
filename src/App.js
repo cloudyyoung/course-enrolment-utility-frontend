@@ -1,13 +1,14 @@
 
 import React from 'react';
 import Login from './Login.js';
-import Reg from './Reg.js';
-
+import Reg from './RegButton.js';
+import Register from './Register.js';
 function App() {
 
     
-
+ 
     return (
+
       <div className="LoginHere">
         <Login />
         <div className="Register" style={{textAlign: 'center'}}>
@@ -15,6 +16,7 @@ function App() {
           <Reg />
         </div>
       </div>
+
     );
 }
 

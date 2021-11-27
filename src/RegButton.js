@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Reg = () => {
+const RegButton = () => {
     return(
         <nav>
             <div>
@@ -10,4 +10,4 @@ const Reg = () => {
     );
 }
 
-export default Reg
+export default RegButton;
