@@ -19,6 +19,10 @@ const Login = () => {
             <h1 style={ssss}>CPSC 471 Website for Group 76</h1>
     
         </header>   
+
+            {/*
+            *This is the place for the user to login
+            */}
         <form class = "form" style={{textAlign: 'center'}}>    
             <section id="loginUser">
             
@@ -35,7 +39,17 @@ const Login = () => {
             <section id="login">
                 <input type="submit" value="Login" />
             </section>
+            <ul></ul>
         </form>
+
+            {/*
+            *This is the button that will take you to the page for register an account
+            */}
+            <nav>
+                <div style={{textAlign: 'center'}}>
+                    <a href="/Register">Register</a>
+                </div>
+            </nav>
     
         </div>
     );
