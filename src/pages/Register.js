@@ -1,5 +1,7 @@
 import React from 'react';
-
+/*
+ *This page is the page for the user to register for an account
+ */
 const Register = () => {
     
 
@@ -11,6 +13,10 @@ const Register = () => {
             <h1 style={{textAlign: 'center'}}>Register for an account</h1>
     
         </header>   
+
+            {/*
+            *This is the place to register for an account
+            */}
         <form class = "form" style={{textAlign: 'center'}}>    
             <section id="RegisterUsername">
             
@@ -28,6 +34,15 @@ const Register = () => {
                 <input type="submit" value="Register" />
             </section>
         </form>
+        <ul></ul>
+            {/*
+            *This is the button that takes you back to the login page
+            */}
+            <nav>
+                <div style={{textAlign: 'center'}}>
+                    <a href="/">Already got an accout? Login here!</a>
+                </div>
+            </nav>
     
         </div>
     );

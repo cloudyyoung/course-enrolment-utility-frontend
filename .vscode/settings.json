@@ -1,7 +1,6 @@
 {
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true
-    },
-    "files.autoSave": "afterDelay",
-    "eslint.format.enable": true,
+    "files.associations": {
+        "*.module": "php",
+        "chrono": "cpp"
+    }
 }
