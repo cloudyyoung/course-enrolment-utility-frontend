@@ -8,7 +8,9 @@ const CourseTree = () => {
                 <Tree />
             </div>
             <div className="column is-3 right-panel">
-                xvvvvvvvvvv
+                <div className="container">
+                    xvvvvvvvvvv
+                </div>
             </div>
         </div>
     );
