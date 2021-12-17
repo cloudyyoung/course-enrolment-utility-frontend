@@ -2,8 +2,8 @@ import React from "react";
 
 export default function Navbar() {
     return (
-        <div className="container">
-            <nav className="navbar is-transparent">
+        <nav className="navbar is-transparent has-shadow">
+            <div className="container">
                 <div className="navbar-brand">
                     <a className="navbar-item" href="/">Ucalgary</a>
                     <div className="navbar-burger" data-target="navbarExampleTransparentExample">
@@ -31,7 +31,7 @@ export default function Navbar() {
                         </div>
                     </div>
                 </div>
-            </nav>
-        </div>
+            </div>
+        </nav>
     );
 }
