@@ -27,7 +27,7 @@ const SignUp = () => {
                 </section>
 
                 <div id="submit">
-                    <button className="button is-primary">Up</button>
+                    <button className="button is-primary">Sign Up</button>
                 </div>
             </div>
 
