@@ -1,4 +1,5 @@
 import React from "react";
+import { Container, Draggable } from "react-smooth-dnd";
 
 class SemesterPlanner extends React.Component {
     constructor(props) {
@@ -31,12 +32,14 @@ class SemesterPlanner extends React.Component {
         const dom = [];
         for (let course of this.state.courses) {
             dom.push(
-                <div className="card">
-                    <div className="card-content">
-                        <h2 className="title is-6">{course.code.toUpperCase()} {course.number}</h2>
-                        <p className="subtitle is-7">{course.topic}</p>
+                <Draggable key={course.course_id}>
+                    <div className="card">
+                        <div className="card-content">
+                            <h2 className="title is-6">{course.code.toUpperCase()} {course.number}</h2>
+                            <p className="subtitle is-7">{course.topic}</p>
+                        </div>
                     </div>
-                </div>
+                </Draggable>
             );
         }
 
@@ -51,7 +54,9 @@ class SemesterPlanner extends React.Component {
                     </select>
                 </div>
                 <div>
-                    {dom}
+                    <Container removeOnDropOut={true} dropPlaceholder={true}>
+                        {dom}
+                    </Container>
                 </div>
             </div>
         );
