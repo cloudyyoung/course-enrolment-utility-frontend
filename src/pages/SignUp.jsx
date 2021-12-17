@@ -3,8 +3,6 @@ import React from "react";
  *This page is the page for the user to register for an account
  */
 const SignUp = () => {
-
-
     return (
         <div className="container is-max-desktop" style={{ "max-width": "20rem" }}>
             <header>
@@ -39,7 +37,6 @@ const SignUp = () => {
 
         </div>
     );
-
 };
 
 export default SignUp;
