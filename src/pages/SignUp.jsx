@@ -15,7 +15,7 @@ const SignUp = () => {
                 <div id="username" className="field">
                     <label className="label">Username</label>
                     <div className="control">
-                        <input id="username" name="username" type="text" className="input" />
+                        <input id="username" name="username" type="text" className="input" placeholder="Your @ucalgary.ca email" />
                     </div>
                 </div>
 
