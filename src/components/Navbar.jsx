@@ -21,11 +21,11 @@ export default function Navbar() {
                     <div className="navbar-end">
                         <div className="navbar-item">
                             <div className="buttons">
-                                <a className="button is-primary">
+                                <a className="button is-primary" href="/signup">
                                     <strong>Sign up</strong>
                                 </a>
-                                <a className="button is-light">
-                                    Log in
+                                <a className="button is-light" href="/signin">
+                                    Sign in
                                 </a>
                             </div>
                         </div>
