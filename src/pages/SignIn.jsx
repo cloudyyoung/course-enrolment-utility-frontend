@@ -1,60 +1,41 @@
-import React from 'react';
-
-
-//the style for the title of the website
-const ssss = {
-    textAlign: 'center',
-    color: 'blue'
-};
+import React from "react";
 
 //function that returns the HTML code 
-const Login = () => {
-
-  
+const SignIn = () => {
     return (
-        <div>
+        <div className="container is-max-desktop" style={{ "max-width": "20rem" }}>
+            <header>
+                <h1 className="is-size-3 has-text-centered">Sign In</h1>
+            </header>
 
-        <header >
-    
-            <h1 style={ssss}>CPSC 471 Website for Group 76</h1>
-    
-        </header>   
+            <div className="form">
+                <div id="username" className="field">
+                    <label className="label">Username</label>
+                    <div className="control">
+                        <input id="username" name="username" type="text" className="input" />
+                    </div>
+                </div>
 
-            {/*
-            *This is the place for the user to login
-            */}
-        <form class = "form" style={{textAlign: 'center'}}>    
-            <section id="loginUser">
-            
-                <label for="username">Username</label>
-                <input id="username" name="username" type="text" maxlength="20" minlength="5"/>
-    
-            </section>
-    
-            <section id="loginPass">
-                <label for="password">Password</label>
-                <input id="password" name="password" type="password" maxlength="20" minlength="5"/>
-            </section>
-    
-            <section id="login">
-                <input type="submit" value="Login" />
-            </section>
-            <ul></ul>
-        </form>
+                <section id="password" className="field">
+                    <label className="label">Password</label>
+                    <div className="control">
+                        <input id="password" name="password" type="password" className="input" />
+                    </div>
+                </section>
 
-            {/*
-            *This is the button that will take you to the page for register an account
-            */}
+                <div id="submit">
+                    <button className="button is-primary">Sign In</button>
+                </div>
+            </div>
+
             <nav>
-                <div style={{textAlign: 'center'}}>
-                    <a href="/Register">Register</a>
+                <div className="has-text-centered">
+                    <a href="/signup">Sign up an account here</a>
                 </div>
             </nav>
-    
+
         </div>
     );
+};
 
-    
-}
-
-export default Login;
+export default SignIn;

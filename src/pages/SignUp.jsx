@@ -2,7 +2,7 @@ import React from "react";
 /*
  *This page is the page for the user to register for an account
  */
-const Register = () => {
+const SignUp = () => {
 
 
     return (
@@ -27,13 +27,13 @@ const Register = () => {
                 </section>
 
                 <div id="submit">
-                    <button className="button is-primary">Register</button>
+                    <button className="button is-primary">Up</button>
                 </div>
             </div>
 
             <nav>
                 <div className="has-text-centered">
-                    <a href="/">Already got an accout? Login here!</a>
+                    <a href="/signin">Already got an accout? Login here!</a>
                 </div>
             </nav>
 
@@ -42,4 +42,4 @@ const Register = () => {
 
 };
 
-export default Register;
+export default SignUp;

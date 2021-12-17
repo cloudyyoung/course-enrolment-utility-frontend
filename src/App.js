@@ -2,8 +2,8 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 
-import Login from "./pages/SignIn";
-import Register from "./pages/SignUp";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
 import NotFound from "./pages/NotFound";
 import Navbar from "./components/Navbar";
 
@@ -15,8 +15,9 @@ function App() {
             <Navbar />
             <Router>
                 <Switch>
-                    <Route exact path="/" component={Login} />
-                    <Route exact path="/Register" component={Register} />
+                    <Route exact path="/" component={SignIn} />
+                    <Route exact path="/signin" component={SignIn} />
+                    <Route exact path="/signup" component={SignUp} />
                     <Route path="/404" component={NotFound} />
                     <Redirect to="/404" />
                 </Switch>
