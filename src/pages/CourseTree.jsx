@@ -1,5 +1,6 @@
 import React from "react";
 import Tree from "../components/Tree";
+import SemesterPlanner from "../components/SemesterPlanner";
 
 const CourseTree = () => {
     return (
@@ -8,9 +9,7 @@ const CourseTree = () => {
                 <Tree />
             </div>
             <div className="column is-3 right-panel">
-                <div className="container">
-                    xvvvvvvvvvv
-                </div>
+                <SemesterPlanner />
             </div>
         </div>
     );
