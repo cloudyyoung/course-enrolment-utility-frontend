@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-d
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import NotFound from "./pages/NotFound";
+import Tree from "./pages/Tree";
 import Navbar from "./components/Navbar";
 
 import "./App.css";
@@ -15,7 +16,8 @@ function App() {
             <Navbar />
             <Router>
                 <Switch>
-                    <Route exact path="/" component={SignIn} />
+                    <Route exact path="/" component={Tree} />
+                    <Route exact path="/tree" component={Tree} />
                     <Route exact path="/signin" component={SignIn} />
                     <Route exact path="/signup" component={SignUp} />
                     <Route path="/404" component={NotFound} />
