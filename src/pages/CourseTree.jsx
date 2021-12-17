@@ -1,10 +1,10 @@
 import React from "react";
 import Tree from "../components/Tree";
 
-const TreeDiagram = () => {
+const CourseTree = () => {
     return (
         <Tree />
     );
 };
 
-export default TreeDiagram;
+export default CourseTree;

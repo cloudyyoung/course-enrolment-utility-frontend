@@ -16,6 +16,7 @@ export default function Navbar() {
                 <div id="navbarExampleTransparentExample" className="navbar-menu">
                     <div className="navbar-start">
                         <a className="navbar-item" href="/tree">Course Tree</a>
+                        <a className="navbar-item" href="/list">Course List</a>
                     </div>
 
                     <div className="navbar-end">
