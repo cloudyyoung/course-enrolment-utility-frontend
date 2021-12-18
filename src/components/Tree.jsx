@@ -35,7 +35,7 @@ class Tree extends React.Component {
     }
 
     componentDidMount() {
-        axios.get("/api/courses")
+        axios.get("/api/course")
             .then(res => {
                 console.log(res.data);
 
@@ -43,6 +43,10 @@ class Tree extends React.Component {
                     console.log("error");
                 } else {
                     this.setState({ courses: res.data });
+
+                    for(let course of this.state.courses) {
+                        console.log(course);
+                    }
                 }
             });
     }

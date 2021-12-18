@@ -93,22 +93,15 @@ class SemesterPlanner extends React.Component {
                         position: toast.POSITION.TOP_RIGHT
                     });
                 } else {
-                    window.location.href = "/tree";
-                    toast.success("You changed the semester.", {
-                        position: toast.POSITION.TOP_RIGHT
-                    });
-                
-                    //for (const x of xs) { console.log(x); }
-                    let temp =[];
-
-                    const allC = res.data;
+                    let temp = [];
+                    let allC = res.data.course_id;
 
                     //get the results of each couses
                     for (const x of allC)
                     {
                         axios.get("/api/course/" + x )
-                        .then(res => {
-                            console.log(res.data);
+                            .then(res => {
+                                console.log(res.data);
             
                                 if (res.data.error) {
                                     console.log("error");
