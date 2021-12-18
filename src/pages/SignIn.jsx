@@ -42,9 +42,10 @@ class SignIn extends React.Component {
                         position: toast.POSITION.TOP_RIGHT
                     });
                 } else {
-                    // toast.success("You are successfully signed in.", {
-                    //     position: toast.POSITION.TOP_RIGHT
-                    // });
+                    window.location.href = "/tree";
+                    toast.success("You are successfully signed in.", {
+                        position: toast.POSITION.TOP_RIGHT
+                    });
                 }
             });
     }
