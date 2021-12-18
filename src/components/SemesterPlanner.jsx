@@ -16,38 +16,41 @@ class SemesterPlanner extends React.Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
+    componentDidMount() {
+        this.fetchSemesterPlan(2021, "fall");
+    }
+
     //End point 9
-    handleChange(event)
-    {
+    handleChange(event) {
         const currentSem = event.target.value;
         
         let year = "", term = "";
-        if (currentSem == "Fall 2021")
-        {
+        if (currentSem == "Fall 2021") {
             year = 2021;
             term = "fall";
         }
 
-        else if (currentSem == "Winter 2022")
-        {
+        else if (currentSem == "Winter 2022") {
             year = 2022;
             term = "winter";
         }
 
-        else if (currentSem == "Spring 2022")
-        {
+        else if (currentSem == "Spring 2022") {
             year = 2022;
             term = "spring";
         }
 
-        else 
-        {
+        else {
             year = 2022;
             term = "summer";
         }
 
         console.log(year, term);
+        this.fetchSemesterPlan(year, term);
+        
+    }
 
+    fetchSemesterPlan(year, term) {
         axios.get("/api/account/student/plan/" + year + "/" + term)
             .then(res => {
                 console.log(res.data);
@@ -63,19 +66,18 @@ class SemesterPlanner extends React.Component {
                     this.setState({ courses: [] });
 
                     //get the results of each couses
-                    for (const x of allC)
-                    {
-                        axios.get("/api/course/" + x )
+                    for (const x of allC) {
+                        axios.get("/api/course/" + x)
                             .then(res => {
                                 console.log(res.data);
-            
+
                                 if (res.data.error) {
                                     console.log("error");
                                     toast.error(res.data.error.message, {
                                         position: toast.POSITION.TOP_RIGHT
                                     });
                                 } else {
-                                
+
                                     //add them to the state
                                     temp.push(res.data);
                                     this.setState({ courses: [...this.state.courses, res.data] });
