@@ -104,7 +104,7 @@ class SemesterPlanner extends React.Component {
                     //get the results of each couses
                     for (const x of allC)
                     {
-                        axios.put("/api/course/" + x )
+                        axios.get("/api/course/" + x )
                         .then(res => {
                             console.log(res.data);
             
