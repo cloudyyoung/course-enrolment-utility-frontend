@@ -37,13 +37,15 @@ class SignUp extends React.Component {
             toast.error("Passwords do not match.", {
                 position: toast.POSITION.TOP_RIGHT
             });
+        } else if (!this.state.email.endsWith("@ucalgary.ca")) {
+            toast.error("Your email must be @ucalgary.ca email", {
+                position: toast.POSITION.TOP_RIGHT
+            });
         } else {
             const params = new URLSearchParams();
             params.append("email", this.state.email);
             params.append("password", this.state.password);
             axios.post("/api/account", params)
-
-
                 .then(res => {
                     console.log(res.data);
 
@@ -53,14 +55,10 @@ class SignUp extends React.Component {
                             position: toast.POSITION.TOP_RIGHT
                         });
                     } else {
-                        window.location.href = "/tree";
+                        window.location.href = "/signin";
                         toast.success("You are successfully signed up.", {
                             position: toast.POSITION.TOP_RIGHT
                         });
-
-                        localStorage.setItem("email", this.state.email);
-                        localStorage.setItem("type", res.data.type);
-
                     }
                 });
         }
