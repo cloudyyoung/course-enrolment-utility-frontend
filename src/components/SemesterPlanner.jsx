@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Draggable } from "react-smooth-dnd";
-
+import { toast } from "react-toastify";
 
 class SemesterPlanner extends React.Component {
     constructor(props) {
