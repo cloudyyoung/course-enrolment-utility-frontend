@@ -9,42 +9,7 @@ class SemesterPlanner extends React.Component {
         super(props);
         this.state = {
             semester: "",
-            courses: [
-                {
-                    course_id: 4954,
-                    no_gpa: false,
-                    repeat: false,
-                    code: "CPSC",
-                    number: "359",
-                    unit: 3,
-                    topic: "Computing Machinery II",
-                    description: "An introduction to hardware and microprocessor design, including the connection between gate-level digital logic circuits and sequential machines that can execute an algorithm and perform input and output. This course may not be repeated for credit.",
-                    hours: "H(1-3H)",
-                    prerequisites: "CPSC 355 and PHIL 279 or 377",
-                    antirequisites: "Credit for both Computer Science 359 and any of 325, 455 or Computer Engineering 415 will not be allowed.",
-                    corequisites: "",
-                    notes: "",
-                    aka: "",
-                    time_length: "",
-                },
-                {
-                    course_id: 4954,
-                    no_gpa: false,
-                    repeat: false,
-                    code: "CPSC",
-                    number: "359",
-                    unit: 3,
-                    topic: "Computing Machinery II",
-                    description: "An introduction to hardware and microprocessor design, including the connection between gate-level digital logic circuits and sequential machines that can execute an algorithm and perform input and output. This course may not be repeated for credit.",
-                    hours: "H(1-3H)",
-                    prerequisites: "CPSC 355 and PHIL 279 or 377",
-                    antirequisites: "Credit for both Computer Science 359 and any of 325, 455 or Computer Engineering 415 will not be allowed.",
-                    corequisites: "",
-                    notes: "",
-                    aka: "",
-                    time_length: "",
-                }
-            ]
+            courses: []
 
         };
 
@@ -95,6 +60,7 @@ class SemesterPlanner extends React.Component {
                 } else {
                     let temp = [];
                     let allC = res.data.course_id;
+                    this.setState({ courses: [] });
 
                     //get the results of each couses
                     for (const x of allC)
@@ -112,12 +78,11 @@ class SemesterPlanner extends React.Component {
                                 
                                     //add them to the state
                                     temp.push(res.data);
-                            
+                                    this.setState({ courses: [...this.state.courses, res.data] });
                                 }
                             });
                     }
 
-                    this.setState({courses: temp});
                     console.log(this.state.cousers);
                 }
             });
