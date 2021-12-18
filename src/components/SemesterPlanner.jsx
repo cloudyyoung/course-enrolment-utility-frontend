@@ -1,6 +1,11 @@
 import React from "react";
 import { Container, Draggable } from "react-smooth-dnd";
 import { toast } from "react-toastify";
+<<<<<<< Updated upstream
+=======
+import axios from "axios";
+
+>>>>>>> Stashed changes
 
 class SemesterPlanner extends React.Component {
     constructor(props) {
@@ -79,23 +84,23 @@ class SemesterPlanner extends React.Component {
         }
 
         axios.put("/api/account/student/plan", params)
-        .then(res => {
-            console.log(res.data);
+            .then(res => {
+                console.log(res.data);
 
-            if (res.data.error) {
-                console.log("error");
-                toast.error(res.data.error.message, {
-                    position: toast.POSITION.TOP_RIGHT
-                });
-            } else {
-                window.location.href = "/tree";
-                toast.success("You are successfully signed in.", {
-                    position: toast.POSITION.TOP_RIGHT
-                });
+                if (res.data.error) {
+                    console.log("error");
+                    toast.error(res.data.error.message, {
+                        position: toast.POSITION.TOP_RIGHT
+                    });
+                } else {
+                    window.location.href = "/tree";
+                    toast.success("You are successfully signed in.", {
+                        position: toast.POSITION.TOP_RIGHT
+                    });
 
                 
-            }
-        });
+                }
+            });
     }
 
     render() {
