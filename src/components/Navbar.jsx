@@ -4,12 +4,14 @@ class Navbar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            user_id: 0,
             email: "",
             type: ""
         };
     }
 
     componentDidMount() {
+        this.setState({ user_id: localStorage.getItem("user_id") });
         this.setState({ email: localStorage.getItem("email") });
         this.setState({ type: localStorage.getItem("type") });
     }
@@ -31,6 +33,10 @@ class Navbar extends React.Component {
                         <div className="navbar-start">
                             <a className="navbar-item" href="/tree">Course Tree</a>
                             <a className="navbar-item" href="/list">Course List</a>
+                            {
+                                this.state.type === "admin" &&
+                                <a className="navbar-item" href="/statistics">Statistics</a>
+                            }
                         </div>
 
                         <div className="navbar-end">

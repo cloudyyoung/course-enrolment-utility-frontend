@@ -13,7 +13,13 @@ class Authenticator extends React.Component {
             .then(res => {
                 if (res.data.error) {
                     console.log("error");
+                    localStorage.removeItem("user_id");
                     localStorage.removeItem("email");
+                    localStorage.removeItem("type");
+                } else {
+                    localStorage.setItem("user_id", res.data.user_id);
+                    localStorage.setItem("email", res.data.email);
+                    localStorage.setItem("type", res.data.type);
                 }
             });
     }

@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 
 class Statistics extends React.Component {
     constructor(props) {
@@ -7,6 +8,21 @@ class Statistics extends React.Component {
             totalUsers: 0,
             totalCourses: 0,
         };
+    }
+
+    componentDidMount() {
+        axios.get("/api/account/admin/statistics")
+            .then(res => {
+                this.setState({
+                    totalUsers: res.data.totalUsers,
+                    totalCourses: res.data.totalCourses,
+                });
+                console.log(res.data);
+            })
+            .catch(err => {
+                window.location.href = "/tree";
+                console.log(err);
+            });
     }
 
     render() {
