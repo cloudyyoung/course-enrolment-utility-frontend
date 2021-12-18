@@ -146,11 +146,11 @@ class SemesterPlanner extends React.Component {
         return (
             <div className="container">
                 <div className="select" style={{"margin-bottom": "1rem"}}>
-                    <select onSelect = {this.handleChange}>
-                        <option>Fall 2021</option>
-                        <option>Winter 2022</option>
-                        <option>Spring 2022</option>
-                        <option>Summer 2022</option>
+                    <select onChange = {this.handleChange}>
+                        <option value = "Fall 2021">Fall 2021</option>
+                        <option value = "Winter 2022">Winter 2022</option>
+                        <option value = "Spring 2022">Spring 2022</option>
+                        <option value = "Summer 2022"> Summer 2022</option>
                     </select>
                 </div>
                 <div>
