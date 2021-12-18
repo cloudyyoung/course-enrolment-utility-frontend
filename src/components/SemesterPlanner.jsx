@@ -65,20 +65,20 @@ class SemesterPlanner extends React.Component {
 
         else if (currentSem == "Winter 2022")
         {
-            params.append("term", "Winter");
-            params.append("year", "2022");
+            year = 2022;
+            term = "winter";
         }
 
         else if (currentSem == "Spring 2022")
         {
-            params.append("term", "Spring");
-            params.append("year", "2022");
+            year = 2022;
+            term = "spring";
         }
 
         else 
         {
-            params.append("term", "Sumer");
-            params.append("year", "2022");
+            year = 2022;
+            term = "summer";
         }
 
         axios.put("/api/account/student/plan/" + year + "/" + term)
