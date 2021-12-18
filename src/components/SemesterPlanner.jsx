@@ -1,11 +1,8 @@
 import React from "react";
 import { Container, Draggable } from "react-smooth-dnd";
 import { toast } from "react-toastify";
-<<<<<<< Updated upstream
-=======
 import axios from "axios";
 
->>>>>>> Stashed changes
 
 class SemesterPlanner extends React.Component {
     constructor(props) {
