@@ -10,6 +10,7 @@ import CourseTree from "./pages/CourseTree";
 import Navbar from "./components/Navbar";
 import Statistics from "./pages/Statistics";
 import CourseList from "./pages/CourseList";
+import Authenticator from "./components/Authenticator";
 
 import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -19,6 +20,7 @@ function App() {
         <div>
             <Navbar />
             <ToastContainer />
+            <Authenticator />
             <Router>
                 <Switch>
                     <Route exact path="/" component={CourseTree} />
