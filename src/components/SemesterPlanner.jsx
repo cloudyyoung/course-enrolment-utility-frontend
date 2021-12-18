@@ -43,7 +43,59 @@ class SemesterPlanner extends React.Component {
                     time_length: "",
                 }
             ]
+
         };
+
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    //End point 9
+    handleChange(event)
+    {
+        const currentSem = event.target.value;
+        const params = new URLSearchParams();
+        if (currentSem == "Fall 2021")
+        {
+            params.append("term", "Fall");
+            params.append("year", "2021");
+        }
+
+        else if (currentSem == "Winter 2022")
+        {
+            params.append("term", "Winter");
+            params.append("year", "2022");
+        }
+
+        else if (currentSem == "Spring 2022")
+        {
+            params.append("term", "Spring");
+            params.append("year", "2022");
+        }
+
+        else 
+        {
+            params.append("term", "Sumer");
+            params.append("year", "2022");
+        }
+
+        axios.put("/api/account/student/plan", params)
+        .then(res => {
+            console.log(res.data);
+
+            if (res.data.error) {
+                console.log("error");
+                toast.error(res.data.error.message, {
+                    position: toast.POSITION.TOP_RIGHT
+                });
+            } else {
+                window.location.href = "/tree";
+                toast.success("You are successfully signed in.", {
+                    position: toast.POSITION.TOP_RIGHT
+                });
+
+                
+            }
+        });
     }
 
     render() {
@@ -64,7 +116,7 @@ class SemesterPlanner extends React.Component {
         return (
             <div className="container">
                 <div className="select" style={{"margin-bottom": "1rem"}}>
-                    <select>
+                    <select onSelect = {this.handleChange}>
                         <option>Fall 2021</option>
                         <option>Winter 2022</option>
                         <option>Spring 2022</option>
