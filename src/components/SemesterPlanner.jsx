@@ -83,7 +83,7 @@ class SemesterPlanner extends React.Component {
 
         console.log(year, term);
 
-        axios.put("/api/account/student/plan/" + year + "/" + term)
+        axios.get("/api/account/student/plan/" + year + "/" + term)
             .then(res => {
                 console.log(res.data);
 
