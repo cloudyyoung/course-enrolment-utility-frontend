@@ -65,29 +65,20 @@ class SemesterPlanner extends React.Component {
 
         else if (currentSem == "Winter 2022")
         {
-<<<<<<< HEAD
             year = 2022;
             term = "winter";
-=======
->>>>>>> f34064c8850e9a438b26771e78f4f6183875f8ff
         }
 
         else if (currentSem == "Spring 2022")
         {
-<<<<<<< HEAD
             year = 2022;
             term = "spring";
-=======
->>>>>>> f34064c8850e9a438b26771e78f4f6183875f8ff
         }
 
         else 
         {
-<<<<<<< HEAD
             year = 2022;
             term = "summer";
-=======
->>>>>>> f34064c8850e9a438b26771e78f4f6183875f8ff
         }
 
         axios.put("/api/account/student/plan/" + year + "/" + term)
@@ -101,10 +92,37 @@ class SemesterPlanner extends React.Component {
                     });
                 } else {
                     window.location.href = "/tree";
-                    toast.success("You are successfully signed in.", {
+                    toast.success("You changed the semester.", {
                         position: toast.POSITION.TOP_RIGHT
                     });
+                
+                    //for (const x of xs) { console.log(x); }
+                    temp =[];
 
+                    const allC = res.data;
+
+                    //get the results of each couses
+                    for (const x of allC)
+                    {
+                        axios.put("/api/course/" + x )
+                        .then(res => {
+                            console.log(res.data);
+            
+                            if (res.data.error) {
+                                console.log("error");
+                                toast.error(res.data.error.message, {
+                                    position: toast.POSITION.TOP_RIGHT
+                                });
+                            } else {
+                                
+                                //add them to the state
+                                temp.push(res.data);
+                            
+                            }
+                        });
+                    }
+
+                    this.setState(temp);
                 
                 }
             });
