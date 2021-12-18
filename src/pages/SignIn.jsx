@@ -42,7 +42,11 @@ class SignIn extends React.Component {
                         position: toast.POSITION.TOP_RIGHT
                     });
                 } else {
-                    window.location.href = "/tree";
+                    if (res.data.type === "admin") {
+                        window.location.href = "/statistics";
+                    } else {
+                        window.location.href = "/tree";
+                    }
                     toast.success("You are successfully signed in.", {
                         position: toast.POSITION.TOP_RIGHT
                     });
