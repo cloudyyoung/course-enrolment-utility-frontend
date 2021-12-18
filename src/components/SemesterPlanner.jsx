@@ -118,7 +118,7 @@ class SemesterPlanner extends React.Component {
                     }
 
                     this.setState({courses: temp});
-                    console.log(this.state.cousers);
+                    console.log(this.state.courses);
                 }
             });
     }
