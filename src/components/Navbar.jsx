@@ -5,11 +5,13 @@ class Navbar extends React.Component {
         super(props);
         this.state = {
             email: "",
+            type: ""
         };
     }
 
     componentDidMount() {
         this.setState({ email: localStorage.getItem("email") });
+        this.setState({ type: localStorage.getItem("type") });
     }
 
     render() {
