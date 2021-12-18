@@ -55,11 +55,12 @@ class SemesterPlanner extends React.Component {
     handleChange(event)
     {
         const currentSem = event.target.value;
-        const params = new URLSearchParams();
+        
+        let year = "", term = "";
         if (currentSem == "Fall 2021")
         {
-            params.append("term", "Fall");
-            params.append("year", "2021");
+            year = 2021;
+            term = "fall";
         }
 
         else if (currentSem == "Winter 2022")
@@ -80,7 +81,7 @@ class SemesterPlanner extends React.Component {
             params.append("year", "2022");
         }
 
-        axios.put("/api/account/student/plan", params)
+        axios.put("/api/account/student/plan/" + year + "/" + term)
             .then(res => {
                 console.log(res.data);
 
