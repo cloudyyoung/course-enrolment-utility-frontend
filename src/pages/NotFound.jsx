@@ -7,7 +7,7 @@ import React from "react";
 
 const NotFound = () => {
     return (
-        <div style={{textAlign: 'center'}}>
+        <div style={{textAlign: "center"}}>
             <h1>404 NOT FOUND! Something is WRONG!</h1>
 
                
