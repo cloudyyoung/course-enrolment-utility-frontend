@@ -81,6 +81,8 @@ class SemesterPlanner extends React.Component {
             term = "summer";
         }
 
+        console.log(year, term);
+
         axios.put("/api/account/student/plan/" + year + "/" + term)
             .then(res => {
                 console.log(res.data);
@@ -108,21 +110,21 @@ class SemesterPlanner extends React.Component {
                         .then(res => {
                             console.log(res.data);
             
-                            if (res.data.error) {
-                                console.log("error");
-                                toast.error(res.data.error.message, {
-                                    position: toast.POSITION.TOP_RIGHT
-                                });
-                            } else {
+                                if (res.data.error) {
+                                    console.log("error");
+                                    toast.error(res.data.error.message, {
+                                        position: toast.POSITION.TOP_RIGHT
+                                    });
+                                } else {
                                 
-                                //add them to the state
-                                temp.push(res.data);
+                                    //add them to the state
+                                    temp.push(res.data);
                             
-                            }
-                        });
+                                }
+                            });
                     }
 
-                    this.setState(temp);
+                    this.setState({courses: temp});
                 
                 }
             });

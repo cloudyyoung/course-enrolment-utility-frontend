@@ -1,5 +1,6 @@
 import React from "react";
 import ReactFlow from "react-flow-renderer";
+import axios from "axios";
 
 class Tree extends React.Component {
     constructor(props) {
@@ -29,7 +30,21 @@ class Tree extends React.Component {
                 { id: "e1-2", source: "1", target: "2", type: "step" },
                 { id: "e2-3", source: "2", target: "3", type: "step", animated: true },
             ],
+            courses: []
         };
+    }
+
+    componentDidMount() {
+        axios.get("/api/courses")
+            .then(res => {
+                console.log(res.data);
+
+                if (res.data.error) {
+                    console.log("error");
+                } else {
+                    this.setState({ courses: res.data });
+                }
+            });
     }
 
     render() {
