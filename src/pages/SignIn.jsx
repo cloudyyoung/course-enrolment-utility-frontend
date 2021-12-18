@@ -46,6 +46,8 @@ class SignIn extends React.Component {
                     toast.success("You are successfully signed in.", {
                         position: toast.POSITION.TOP_RIGHT
                     });
+                    
+                    localStorage.setItem("email", this.state.email);
                 }
             });
     }
