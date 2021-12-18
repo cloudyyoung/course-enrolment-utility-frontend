@@ -12,7 +12,6 @@ class Statistics extends React.Component {
     render() {
         return (
             <div className="container">
-                <h1 className="is-text-4"></h1>
                 <div className="card">
                     <div className="card-content">
                         <h2 className="title is-2 grade">{ this.state.totalUsers }</h2>
