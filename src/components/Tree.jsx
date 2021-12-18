@@ -43,10 +43,40 @@ class Tree extends React.Component {
                     console.log("error");
                 } else {
                     this.setState({ courses: res.data });
+                    
+                    let levels = {};
+                    let element = [];
 
                     for(let course of this.state.courses) {
                         console.log(course);
+
+                        let number = parseInt(course.number);
+                        let level = Math.floor(number / 100);
+                        
+                        if (!levels[level]) {
+                            levels[level] = [];
+                        }
+
+                        levels[level].push(course);
                     }
+
+                    for (let level in levels) {
+                        for (let index in levels[level]) {
+                            let course = levels[level][index];
+                            let x = index * 200;
+                            let y = level * 100;
+                            console.log(course.number, x, y);
+
+                            element.push({
+                                id: course.course_id,
+                                type: "output",
+                                data: { label: course.code + " " + course.number },
+                                position: { x: x, y: y },
+                            });
+                        }
+                    }
+
+                    this.setState({ elements: element });
                 }
             });
     }
