@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 
 export default class CourseList extends React.Component {
     constructor(props) {
@@ -58,6 +59,20 @@ export default class CourseList extends React.Component {
                 }
             ]
         };
+    }
+
+    componentDidMount() {
+        axios.get("http://ucalgary.localhost/api/course")
+            .then(res => {
+                this.setState({
+                    courses: res.data
+                });
+                console.log(this.state.courses);
+            })
+            .catch(err => {
+                console.log("aaaaa");
+                console.log(err);
+            });
     }
 
     render() {
