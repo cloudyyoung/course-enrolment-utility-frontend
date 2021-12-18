@@ -1,6 +1,7 @@
 
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
@@ -11,11 +12,13 @@ import Statistics from "./pages/Statistics";
 import CourseList from "./pages/CourseList";
 
 import "./App.css";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
     return (
         <div>
             <Navbar />
+            <ToastContainer />
             <Router>
                 <Switch>
                     <Route exact path="/" component={CourseTree} />
