@@ -6,30 +6,7 @@ class Tree extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            elements: [
-                {
-                    id: "1",
-                    type: "input", // input node
-                    data: { label: "Input Node" },
-                    position: { x: 250, y: 125 },
-                },
-                // default node
-                {
-                    id: "2",
-                    // you can also pass a React component as a label
-                    data: { label: <div>Default Node</div> },
-                    position: { x: 100, y: 325 },
-                },
-                {
-                    id: "3",
-                    type: "output", // output node
-                    data: { label: "Output Node" },
-                    position: { x: 250, y: 450 },
-                },
-                // animated edge
-                { id: "e1-2", source: "1", target: "2", type: "step" },
-                { id: "e2-3", source: "2", target: "3", type: "step", animated: true },
-            ],
+            elements: [],
             courses: []
         };
     }
@@ -68,11 +45,32 @@ class Tree extends React.Component {
                             console.log(course.number, x, y);
 
                             element.push({
-                                id: course.course_id,
+                                // id: course.course_id,
+                                id: course.code + course.number,
                                 type: "output",
                                 data: { label: course.code + " " + course.number },
                                 position: { x: x, y: y },
                             });
+
+                            // for (let prereq of course.prereq) {
+                            //     for (let condition of prereq) {
+                            //         if (condition == Object) {
+                            //             // Units
+                            //             let keys = condition.key;
+
+                            //             for (let key of keys) {
+                            //                 element.push({
+                            //                     id: course.code + course.number + "-" + key,
+                            //                     source: course.code + course.number,
+                            //                     target: key,
+                            //                     type: "step",
+                            //                 });
+                            //             }
+                            //         } else if (Array.isArray(condition)) {
+                            //             //
+                            //         }
+                            //     }
+                            // }
                         }
                     }
 
