@@ -97,7 +97,7 @@ class SemesterPlanner extends React.Component {
                     });
                 
                     //for (const x of xs) { console.log(x); }
-                    temp =[];
+                    let temp =[];
 
                     const allC = res.data;
 
