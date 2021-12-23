@@ -192,12 +192,15 @@ class Tree extends React.Component {
             isModalActive: false,
         });
 
-        let currentSemesterCourses = JSON.parse(localStorage.getItem("currentSemesterCourses"));
-        currentSemesterCourses.push(this.state.currentCourse.course_id);
+        let currentSemesterCourses = [];
+        if (localStorage.getItem("currentSemesterCourses") !== null) {
+            let currentSemesterCourses = JSON.parse(localStorage.getItem("currentSemesterCourses"));
+            currentSemesterCourses.push(this.state.currentCourse.course_id);
+        }
 
         const params = new URLSearchParams();
         params.append("course_id", JSON.stringify(currentSemesterCourses));
-        
+
         axios.put("api/account/student/plan/" + localStorage.getItem("currentSemester"), params)
             .then(res => {
                 if (res.status !== 200) {
