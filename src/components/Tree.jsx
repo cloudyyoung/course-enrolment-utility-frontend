@@ -228,8 +228,8 @@ class Tree extends React.Component {
                             </table>
                         </div>
 
-                        <p>{this.state.currentCourse.no_gpa === true ? "This course is not included in GPA." : ""}</p>
-                        <p>{this.state.currentCourse.repeat === true ? "This course may be repeated for credit." : ""}</p>
+                        <p>{this.state.currentCourse.no_gpa === "true" ? "This course is not included in GPA." : ""}</p>
+                        <p>{this.state.currentCourse.repeat === "true" ? "This course may be repeated for credit." : ""}</p>
                     </ModalBody>
                 </Modal>
             </ReactFlow>
