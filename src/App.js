@@ -11,6 +11,7 @@ import Navbar from "./components/Navbar";
 import Statistics from "./pages/Statistics";
 import CourseList from "./pages/CourseList";
 import Authenticator from "./components/Authenticator";
+import Account from "./pages/Account";
 
 import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -28,6 +29,7 @@ function App() {
                     <Route exact path="/list" component={CourseList} />
                     <Route exact path="/signin" component={SignIn} />
                     <Route exact path="/signup" component={SignUp} />
+                    <Route exact path="/account" component={Account} />
                     <Route exact path="/statistics" component={Statistics} />
                     <Route path="/404" component={NotFound} />
                     <Redirect to="/404" />

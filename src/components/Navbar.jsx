@@ -55,7 +55,7 @@ class Navbar extends React.Component {
                                 {
                                     this.state.email &&
                                     <div className="buttons">
-                                        <a className="button is-light" href="/">
+                                        <a className="button is-light" href="/account">
                                             {this.state.email}
                                         </a>
                                     </div>
