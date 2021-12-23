@@ -10,6 +10,7 @@ class Account extends React.Component {
             confirmNewPassword: "",
             inputMajor:"",
             major: "",
+            inputMinor:"",
             minor:""
         };
 
@@ -18,6 +19,7 @@ class Account extends React.Component {
         this.submitChangePassword = this.submitChangePassword.bind(this);
         this.handleChangeMajor = this.handleChangeMajor.bind(this);
         this.submitChangeMajor = this.submitChangeMajor.bind(this);
+        this.handleChangeMinor = this.handleChangeMinor.bind(this);
     }
 
     componentDidMount() {
@@ -36,6 +38,11 @@ class Account extends React.Component {
         this.setState({ inputMajor: event.target.value });
     }
 
+    handleChangeMinor(event){
+        this.setState({ inputMinor: event.target.value });
+    }
+
+
     submitChangeMajor(event){
         event.preventDefault();
         const params = new URLSearchParams();
@@ -44,10 +51,19 @@ class Account extends React.Component {
         let list = [];
         if (this.state.inputMajor != 0)
         {
-            list.append(this.state.inputMajor);
+            list.push(this.state.inputMajor);
         }
+
+
         
         params.append("major", list);
+
+        list = [];
+        if (this.state.inputMinor != 0)
+        {
+            list.push(this.state.inputMinor);
+        }
+        
         params.append("minor", list);
         params.append("concentration", []);
         axios.put("/api/account/student", params)
@@ -65,12 +81,27 @@ class Account extends React.Component {
                 });*/
 
                 //if we did not add any major then we set major to empty
-                if (res.data["major"].length == 0)
+                if (res.data["major"] == null)
                 {
                     this.setState({ major: "" });
                 }
-                this.setState({ major: res.data["major"][0], minor: "" });
+                else
+                {
+                    this.setState({ major: res.data["major"][0]});
 
+                }
+
+
+                if (res.data["minor"] == null)
+                {
+                    this.setState({ minor: "" });
+                }
+                else
+                {
+                    this.setState({ minor: res.data["minor"][0] });
+
+                }
+                
             }
         })
             
@@ -122,21 +153,25 @@ class Account extends React.Component {
 
                 <div className="form">
                     <div id="username" className="field">
-                        <label className="label">Enter major here</label>
+                        <label className="label">Enter major major</label>
                         <div className="control">
                             {/*This is now the box to enter your major*/}
-                            <input id="major" list="major" name="major" type="text" className="input" value={this.state.inputMajor} onChange={this.handleChangeMajor} />
-                            <datalist id="major">
-                                <option value = "24768"></option>
-                                <option value = "0"></option>
-                            </datalist>
+                            <select id="major"  name="major" className="input" value={this.state.inputMajor} onChange={this.handleChangeMajor} >
+                                <option value = "24768">Computer Science</option>
+                                <option value = "0">No Major</option>
+                            </select>
                         </div>
                     </div>
 
                     <section id="password" className="field">
-                        <label className="label">Confirm new password</label>
+                        <label className="label">Choose your minor</label>
                         <div className="control">
-                            <input id="confirm_new_password" name="confirm_new_password" type="password" className="input" value={this.state.confirmNewPassword} onChange={this.handleConfirmNewPasswordChange} />
+                            
+                            {/*This is now the box to enter your major*/}
+                            <select id="minor"  name="minor" className="input" value={this.state.inputMinor} onChange={this.handleChangeMinor} >
+                                <option value = "24768">Computer Science</option>
+                                <option value = "0">No Major</option>
+                            </select>
                         </div>
                     </section>
 
@@ -148,7 +183,7 @@ class Account extends React.Component {
                 <div style={{ "height": "4rem" }}></div>
 
                 <header>
-                    <h1 className="is-size-3 has-text-centered">Change Password</h1>
+                    <h1 className="is-size-3 has-text-centered">Change Major and Minor</h1>
                 </header>
 
                 <div className="form">
