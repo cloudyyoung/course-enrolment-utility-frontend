@@ -141,7 +141,7 @@ class Account extends React.Component {
                     </section>
 
                     <div id="submit">
-                        <button className="button is-primary" onClick={this.submitChangePassword}>Change Password</button>
+                        <button className="button is-primary" onClick={this.submitChangeMajor}>Change Password</button>
                     </div>
                 </div>
 
