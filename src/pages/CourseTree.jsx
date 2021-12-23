@@ -1,6 +1,6 @@
 import React from "react";
 import Tree from "../components/Tree";
-import SemesterPlanner from "../components/SemesterPlanner";
+import EnrolmentPlanner from "../components/EnrolmentPlanner";
 
 class CourseTree extends React.Component {
     render() {
@@ -10,7 +10,7 @@ class CourseTree extends React.Component {
                     <Tree />
                 </div>
                 <div className="column is-3 right-panel">
-                    <SemesterPlanner />
+                    <EnrolmentPlanner />
                 </div>
             </div>
         );

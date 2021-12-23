@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 
 
-class SemesterPlanner extends React.Component {
+class EnrolmentPlanner extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -109,4 +109,4 @@ class SemesterPlanner extends React.Component {
     }
 }
 
-export default SemesterPlanner;
+export default EnrolmentPlanner;
