@@ -22,6 +22,7 @@ class Tree extends React.Component {
         this.onNodeDragStart = this.onNodeDragStart.bind(this);
         this.onElementClick = this.onElementClick.bind(this);
         this.onModalClose = this.onModalClose.bind(this);
+        this.addTo = this.addTo.bind(this);
     }
 
     componentDidMount() {
@@ -186,6 +187,27 @@ class Tree extends React.Component {
         return str.replace(/<[^>]*>?/gm, "");
     }
 
+    addTo() {
+        this.setState({
+            isModalActive: false,
+        });
+
+        let currentSemesterCourses = JSON.parse(localStorage.getItem("currentSemesterCourses"));
+        currentSemesterCourses.push(this.state.currentCourse.course_id);
+
+        const params = new URLSearchParams();
+        params.append("course_id", JSON.stringify(currentSemesterCourses));
+        
+        axios.put("api/account/student/plan/" + localStorage.getItem("currentSemester"), params)
+            .then(res => {
+                if (res.status !== 200) {
+                    console.log(res);
+                } else {
+                    console.log(res.data);
+                }
+            });
+    }
+
     render() {
         return (
             <ReactFlow elements={this.state.elements} nodeTypes={this.state.nodeTypes}
@@ -246,7 +268,7 @@ class Tree extends React.Component {
                         }
                     </ModalBody>
                     <ModalFooter>
-                        <button className="button is-primary">Add to { this.state.currentSemesterDisplay }</button>
+                        <button className="button is-primary" onClick={this.addTo}>Add to { this.state.currentSemesterDisplay }</button>
                     </ModalFooter>
                 </Modal>
             </ReactFlow>

@@ -19,6 +19,7 @@ class EnrolmentPlanner extends React.Component {
     componentDidMount() {
         this.fetchSemesterPlan(2021, "fall");
         localStorage.setItem("currentSemesterDisplay", "Fall 2021");
+        localStorage.setItem("currentSemester", "2021/fall");
     }
 
     //End point 9
@@ -47,6 +48,7 @@ class EnrolmentPlanner extends React.Component {
         }
 
         localStorage.setItem("currentSemesterDisplay", currentSemesterDisplay);
+        localStorage.setItem("currentSemester", year + "/" + term);
 
         console.log(year, term);
         this.fetchSemesterPlan(year, term);
@@ -71,6 +73,13 @@ class EnrolmentPlanner extends React.Component {
                     for (const x of allC) {
                         this.setState({ courses: [...this.state.courses, x] });
                     }
+
+                    let allCID = [];
+                    for (const x of allC) {
+                        allCID.push(x.course_id);
+                    }
+
+                    localStorage.setItem("currentSemesterCourses", JSON.stringify(allCID));
 
                     console.log(this.state.cousers);
                 }
