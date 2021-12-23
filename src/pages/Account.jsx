@@ -7,12 +7,17 @@ class Account extends React.Component {
         super(props);
         this.state = {
             newPassword: "",
-            confirmNewPassword: ""
+            confirmNewPassword: "",
+            inputMajor:"",
+            major: "",
+            minor:""
         };
 
         this.handleNewPasswordChange = this.handleNewPasswordChange.bind(this);
         this.handleConfirmNewPasswordChange = this.handleConfirmNewPasswordChange.bind(this);
         this.submitChangePassword = this.submitChangePassword.bind(this);
+        this.handleChangeMajor = this.handleChangeMajor.bind(this);
+        this.submitChangeMajor = this.submitChangeMajor.bind(this);
     }
 
     componentDidMount() {
@@ -25,6 +30,51 @@ class Account extends React.Component {
 
     handleConfirmNewPasswordChange(event) {
         this.setState({ confirmNewPassword: event.target.value });
+    }
+
+    handleChangeMajor(event) {
+        this.setState({ inputMajor: event.target.value });
+    }
+
+    submitChangeMajor(event){
+        event.preventDefault();
+        const params = new URLSearchParams();
+
+        //get the input major into a list
+        let list = [];
+        if (this.state.inputMajor != 0)
+        {
+            list.append(this.state.inputMajor);
+        }
+        
+        params.append("major", list);
+        params.append("minor", list);
+        params.append("concentration", []);
+        axios.put("/api/account/student", params)
+        .then(res => {
+            if (res.status !== 200) {
+                console.log("error");
+                toast.error(res.data.error.message, {
+                    position: toast.POSITION.TOP_RIGHT
+                });
+            } else {
+                /*
+                this.setState({ newPassword: "", confirmNewPassword: "" });
+                toast.success("You successfully changed your password.", {
+                    position: toast.POSITION.TOP_RIGHT
+                });*/
+
+                //if we did not add any major then we set major to empty
+                if (res.data["major"].length == 0)
+                {
+                    this.setState({ major: "" });
+                }
+                this.setState({ major: res.data["major"][0], minor: "" });
+
+            }
+        })
+            
+        
     }
 
     submitChangePassword(event) {
@@ -64,6 +114,7 @@ class Account extends React.Component {
     
     render() {
         return (
+            
             <div className="container is-max-desktop" style={{ "max-width": "20rem" }}>
                 <header>
                     <h1 className="is-size-3 has-text-centered">Major, Minor and Concentration</h1>
@@ -71,9 +122,14 @@ class Account extends React.Component {
 
                 <div className="form">
                     <div id="username" className="field">
-                        <label className="label">New password</label>
+                        <label className="label">Enter major here</label>
                         <div className="control">
-                            <input id="new_password" name="new_password" type="password" className="input" value={this.state.newPassword} onChange={this.handleNewPasswordChange} />
+                            {/*This is now the box to enter your major*/}
+                            <input id="major" list="major" name="major" type="text" className="input" value={this.state.inputMajor} onChange={this.handleChangeMajor} />
+                            <datalist id="major">
+                                <option value = "24768"></option>
+                                <option value = "0"></option>
+                            </datalist>
                         </div>
                     </div>
 
