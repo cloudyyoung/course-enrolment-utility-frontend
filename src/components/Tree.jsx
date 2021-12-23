@@ -194,12 +194,13 @@ class Tree extends React.Component {
 
         let currentSemesterCourses = [];
         if (localStorage.getItem("currentSemesterCourses") !== null) {
-            let currentSemesterCourses = JSON.parse(localStorage.getItem("currentSemesterCourses"));
+            currentSemesterCourses = JSON.parse(localStorage.getItem("currentSemesterCourses"));
             currentSemesterCourses.push(this.state.currentCourse.course_id);
         }
 
         const params = new URLSearchParams();
         params.append("course_id", JSON.stringify(currentSemesterCourses));
+        console.log(currentSemesterCourses);
 
         axios.put("api/account/student/plan/" + localStorage.getItem("currentSemester"), params)
             .then(res => {
