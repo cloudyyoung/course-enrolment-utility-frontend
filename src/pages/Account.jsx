@@ -157,7 +157,7 @@ class Account extends React.Component {
             
             <div className="container is-max-desktop" style={{ "max-width": "20rem" }}>
                 <header>
-                    <h1 className="is-size-3 has-text-centered">Major, Minor and Concentration</h1>
+                    <h1 className="is-size-3 has-text-centered">Major and Minor</h1>
                 </header>
 
                 <div className="form">
@@ -192,7 +192,7 @@ class Account extends React.Component {
                 <div style={{ "height": "4rem" }}></div>
 
                 <header>
-                    <h1 className="is-size-3 has-text-centered">Change Major and Minor</h1>
+                    <h1 className="is-size-3 has-text-centered">Change your Password</h1>
                 </header>
 
                 <div className="form">
