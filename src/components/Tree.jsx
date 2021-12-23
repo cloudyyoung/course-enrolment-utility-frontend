@@ -231,9 +231,14 @@ class Tree extends React.Component {
                             </div>
 
                         }
-
-                        <p>{this.state.currentCourse.no_gpa === "true" ? "This course is not included in GPA." : ""}</p>
-                        <p>{this.state.currentCourse.repeat === "true" ? "This course may be repeated for credit." : ""}</p>
+                        {
+                            this.state.currentCourse.no_gpa === "true" &&
+                            <p>This course is not included in GPA.</p>
+                        }
+                        {
+                            this.state.currentCourse.repeat === "true" &&
+                            <p>This course may be repeated for credit.</p>
+                        }
                     </ModalBody>
                     <ModalFooter>
                         <button className="button is-primary">Add to Semester</button>
