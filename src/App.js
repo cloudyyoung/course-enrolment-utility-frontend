@@ -19,9 +19,9 @@ import "react-toastify/dist/ReactToastify.css";
 function App() {
     return (
         <div>
+            <Authenticator />
             <Navbar />
             <ToastContainer />
-            <Authenticator />
             <Router>
                 <Switch>
                     <Route exact path="/" component={CourseTree} />

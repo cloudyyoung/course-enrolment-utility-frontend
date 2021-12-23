@@ -2,7 +2,7 @@
   "name": "app",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://ucalgary.localhost",
+  "proxy": "http://api.ucalgary.cloudyyoung.com/",
   "dependencies": {
     "axios": "^0.24.0",
     "react": "^17.0.2",

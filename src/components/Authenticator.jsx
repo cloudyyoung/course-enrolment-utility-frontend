@@ -11,7 +11,7 @@ class Authenticator extends React.Component {
     authenticate() {
         axios.get("/api/account")
             .then(res => {
-                if (res.statuc !== 200) {
+                if (res.status !== 200) {
                     console.log("Signed out");
                     localStorage.removeItem("user_id");
                     localStorage.removeItem("email");
