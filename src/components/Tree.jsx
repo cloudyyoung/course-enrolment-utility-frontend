@@ -15,6 +15,7 @@ class Tree extends React.Component {
             elements: [],
             courses: [],
             isModalActive: false,
+            currentCourse: {},
         };
 
         this.onNodeDragStart = this.onNodeDragStart.bind(this);
@@ -152,14 +153,32 @@ class Tree extends React.Component {
         console.log("drag start");
     }
 
-    onElementClick(e) {
-        this.setState({ isModalActive: true });
-        console.log("element click", this.state.isModalActive);
+    onElementClick(event, element) {
+        let course_node = element.data;
+        let course_id = course_node.course_id;
+
+        axios.get("/api/course/" + course_id)
+            .then(res => {
+                if (res.status !== 200) {
+                    console.log(res);
+                } else {
+                    this.setState({
+                        isModalActive: true,
+                        currentCourse: res.data,
+                    });
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            });
     }
 
     onModalClose() {
-        console.log("close modal");
         this.setState({ isModalActive: false });
+    }
+
+    removeHtmlTags(str) {
+        return str.replace(/<[^>]*>?/gm, "");
     }
 
     render() {
@@ -168,9 +187,24 @@ class Tree extends React.Component {
                 nodesDraggable={false} onNodeDragStart={this.onNodeDragStart} onElementClick={this.onElementClick}
                 elementsSelectable={true}>
                 
-                <Modal isActive={this.state.isModalActive} onClose={this.onModalClose} title="CPSC 203">
+                <Modal isActive={this.state.isModalActive} onClose={this.onModalClose} title={ this.state.currentCourse.code + " " +  this.state.currentCourse.number }>
                     <ModalBody>
-                        Topic: 
+                        <p>Topic: {this.state.currentCourse.topic}</p>
+                        <p>Description: {this.state.currentCourse.description}</p>
+                        {
+                            this.state.currentCourse.prerequisites != null &&
+                            <p className="description">Prerequisite(s): {this.removeHtmlTags(this.state.currentCourse.prerequisites)}</p>
+                        }
+                        {
+                            this.state.currentCourse.antirequisites != null &&
+                            <p className="description">Antirequisite(s): {this.removeHtmlTags(this.state.currentCourse.antirequisites)}</p>
+                        }
+                        {
+                            this.state.currentCourse.corequisites != null &&
+                            <p className="description">Corequisite(s): {this.removeHtmlTags(this.state.currentCourse.corequisites)}</p>
+                        }
+                        <p>{this.state.currentCourse.no_gpa === true ? "This course is not included in GPA." : ""}</p>
+                        <p>{this.state.currentCourse.repeat === true ? "This course may be repeated for credit." : "" }</p>
                     </ModalBody>
                 </Modal>
             </ReactFlow>
