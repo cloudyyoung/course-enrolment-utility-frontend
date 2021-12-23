@@ -11,17 +11,22 @@ class Authenticator extends React.Component {
     authenticate() {
         axios.get("/api/account")
             .then(res => {
-                if (res.data.error) {
-                    console.log("error");
+                if (res.statuc !== 200) {
+                    console.log("Signed out");
                     localStorage.removeItem("user_id");
                     localStorage.removeItem("email");
                     localStorage.removeItem("type");
+                    localStorage.clear();
                 } else {
                     localStorage.setItem("user_id", res.data.user_id);
                     localStorage.setItem("email", res.data.email);
                     localStorage.setItem("type", res.data.type);
                 }
             });
+    }
+
+    componentDidMount() {
+        this.authenticate();
     }
 
     render() {
