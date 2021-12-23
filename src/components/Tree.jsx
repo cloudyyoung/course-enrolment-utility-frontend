@@ -189,7 +189,7 @@ class Tree extends React.Component {
                 
                 <Modal isActive={this.state.isModalActive} onClose={this.onModalClose} title={ this.state.currentCourse.code + " " +  this.state.currentCourse.number }>
                     <ModalBody>
-                        <p className="title is-6">{this.state.currentCourse.topic}</p>
+                        <p className="title is-5">{this.state.currentCourse.topic}</p>
                         <p className="">{this.state.currentCourse.description}</p>
 
                         <div style={{ marginBottom: 24 }}></div>
