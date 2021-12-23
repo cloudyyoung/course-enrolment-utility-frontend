@@ -58,7 +58,7 @@ export default class CourseList extends React.Component {
                             <p className="subtitle is-6">{course.topic}</p>
                             <p className="description">{course.description = ""}</p>
                             {
-                                course.hours != "" &&
+                                course.hours !== "" &&
                                 <p className="description">Hours: {course.hours}</p>
                             }
                             {
