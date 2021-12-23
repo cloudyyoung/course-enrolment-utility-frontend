@@ -3,7 +3,7 @@ import ReactFlow from "react-flow-renderer";
 import axios from "axios";
 
 import CourseNode from "./CourseNode";
-import Modal, { ModalBody } from "./Modal";
+import Modal, { ModalBody, ModalFooter } from "./Modal";
 
 class Tree extends React.Component {
     constructor(props) {
@@ -194,43 +194,50 @@ class Tree extends React.Component {
 
                         <div style={{ marginBottom: 24 }}></div>
                         
-                        <div className="table-container">
-                            <table className="table is-fullwidth">
-                                <thead>
-                                    <tr>
-                                        <th>Requisite</th>
-                                        <th>Description</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {
-                                        this.state.currentCourse.prerequisites != null &&
-                                    <tr>
-                                        <td>Prerequisite(s)</td>
-                                        <td>{this.removeHtmlTags(this.state.currentCourse.prerequisites)}</td>
-                                    </tr>
-                                    }
-                                    {
-                                        this.state.currentCourse.antirequisites != null &&
-                                    <tr>
-                                        <td>Antirequisite(s)</td>
-                                        <td>{this.removeHtmlTags(this.state.currentCourse.antirequisites)}</td>
-                                    </tr>
-                                    }
-                                    {
-                                        this.state.currentCourse.corequisites != null &&
-                                    <tr>
-                                        <td>Corequisite(s)</td>
-                                        <td>{this.removeHtmlTags(this.state.currentCourse.corequisites)}</td>
-                                    </tr>
-                                    }
-                                </tbody>
-                            </table>
-                        </div>
+                        {
+                            (this.state.currentCourse.prerequisites || this.state.currentCourse.antirequisites || this.state.currentCourse.corequisites) &&
+                            <div className="table-container">
+                                <table className="table is-fullwidth">
+                                    <thead>
+                                        <tr>
+                                            <th>Requisite</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {
+                                            this.state.currentCourse.prerequisites != null &&
+                                            <tr>
+                                                <td>Prerequisite(s)</td>
+                                                <td>{this.removeHtmlTags(this.state.currentCourse.prerequisites)}</td>
+                                            </tr>
+                                        }
+                                        {
+                                            this.state.currentCourse.antirequisites != null &&
+                                            <tr>
+                                                <td>Antirequisite(s)</td>
+                                                <td>{this.removeHtmlTags(this.state.currentCourse.antirequisites)}</td>
+                                            </tr>
+                                        }
+                                        {
+                                            this.state.currentCourse.corequisites != null &&
+                                            <tr>
+                                                <td>Corequisite(s)</td>
+                                                <td>{this.removeHtmlTags(this.state.currentCourse.corequisites)}</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        }
 
                         <p>{this.state.currentCourse.no_gpa === "true" ? "This course is not included in GPA." : ""}</p>
                         <p>{this.state.currentCourse.repeat === "true" ? "This course may be repeated for credit." : ""}</p>
                     </ModalBody>
+                    <ModalFooter>
+                        <button className="button is-primary">Add to Semester</button>
+                    </ModalFooter>
                 </Modal>
             </ReactFlow>
         );

@@ -41,7 +41,7 @@ class ModalBody extends React.Component {
     }
 }
 
-class ModelFooter extends React.Component {
+class ModalFooter extends React.Component {
     render() {
         return (
             <div className="modal-card-foot">
@@ -52,4 +52,4 @@ class ModelFooter extends React.Component {
 }
 
 export default Modal;
-export { ModalBody, ModelFooter };
+export { ModalBody, ModalFooter };
