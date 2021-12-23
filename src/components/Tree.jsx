@@ -1,13 +1,17 @@
 import React from "react";
 import ReactFlow from "react-flow-renderer";
 import axios from "axios";
+import CourseNode from "./CourseNode";
 
 class Tree extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            nodeTypes: {
+                course: CourseNode,
+            },
             elements: [],
-            courses: []
+            courses: [],
         };
     }
 
@@ -45,32 +49,11 @@ class Tree extends React.Component {
                             console.log(course.number, x, y);
 
                             element.push({
-                                // id: course.course_id,
-                                id: course.code + course.number,
-                                type: "output",
-                                data: { label: course.code + " " + course.number },
+                                id: course.code + " " + course.number,
+                                type: "course",
+                                data: course,
                                 position: { x: x, y: y },
                             });
-
-                            // for (let prereq of course.prereq) {
-                            //     for (let condition of prereq) {
-                            //         if (condition == Object) {
-                            //             // Units
-                            //             let keys = condition.key;
-
-                            //             for (let key of keys) {
-                            //                 element.push({
-                            //                     id: course.code + course.number + "-" + key,
-                            //                     source: course.code + course.number,
-                            //                     target: key,
-                            //                     type: "step",
-                            //                 });
-                            //             }
-                            //         } else if (Array.isArray(condition)) {
-                            //             //
-                            //         }
-                            //     }
-                            // }
                         }
                     }
 
@@ -78,10 +61,23 @@ class Tree extends React.Component {
                 }
             });
     }
+    
+    onNodeDragStart(e) {
+        e.preventDefault();
+        console.log("drag start");
+    }
+
+    onElementClick(e) {
+        console.log(e);
+        console.log("element click");
+    }
 
     render() {
         return (
-            <ReactFlow elements={this.state.elements} />
+            <ReactFlow elements={this.state.elements} nodeTypes={this.state.nodeTypes}
+                nodesDraggable={false} onNodeDragStart={this.onNodeDragStart} onElementClick={this.onElementClick}
+                elementsSelectable={true}
+            />
         );
     }
 }
