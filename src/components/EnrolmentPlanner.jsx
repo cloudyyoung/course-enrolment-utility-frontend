@@ -81,7 +81,7 @@ class EnrolmentPlanner extends React.Component {
                 <Draggable key={course.course_id}>
                     <div className="card course">
                         <div className="card-content">
-                            <h2 className="title is-6">{course.code.toUpperCase()} {course.number}</h2>
+                            <h2 className="title is-6 has-text-weight-semibold is-uppercase">{course.code} {course.number}</h2>
                             <p className="subtitle is-7">{course.topic}</p>
                         </div>
                     </div>

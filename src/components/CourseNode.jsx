@@ -7,7 +7,7 @@ export default memo(({ data }) => {
     return (
         <div>
             <Handle type="source" position="top" style={{ background: "#555" }} isConnectable={true} />
-            <div className="tree-node">{data.code} { data.number }</div>
+            <div className="tree-node has-text-weight-semibold is-uppercase">{ data.code } { data.number }</div>
             <Handle type="target" position="bottom" style={{ background: "#555" }} isConnectable={true} />
         </div>
     );
