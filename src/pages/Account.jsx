@@ -8,9 +8,9 @@ class Account extends React.Component {
         this.state = {
             newPassword: "",
             confirmNewPassword: "",
-            inputMajor:"",
+            inputMajor:0,
             major: "",
-            inputMinor:"",
+            inputMinor:0,
             minor:""
         };
 
@@ -35,11 +35,14 @@ class Account extends React.Component {
     }
 
     handleChangeMajor(event) {
+        
         this.setState({ inputMajor: event.target.value });
+        console.log(this.state.inputMajor);
     }
 
     handleChangeMinor(event){
         this.setState({ inputMinor: event.target.value });
+        console.log(this.state.inputMinor);
     }
 
 
@@ -74,6 +77,9 @@ class Account extends React.Component {
                     position: toast.POSITION.TOP_RIGHT
                 });
             } else {
+                toast.success("You successfully changed your major.", {
+                    position: toast.POSITION.TOP_RIGHT
+                });
                 /*
                 this.setState({ newPassword: "", confirmNewPassword: "" });
                 toast.success("You successfully changed your password.", {
@@ -83,23 +89,26 @@ class Account extends React.Component {
                 //if we did not add any major then we set major to empty
                 if (res.data["major"] == null)
                 {
-                    this.setState({ major: "" });
+                    this.setState({ major: "No Major" });
+                    this.setState({ inputMajor: 0 });
                 }
                 else
                 {
-                    this.setState({ major: res.data["major"][0]});
+                    this.setState({ major: "Computer Science"});
+                    this.setState({ inputMajor: 24768});
 
                 }
 
 
                 if (res.data["minor"] == null)
                 {
-                    this.setState({ minor: "" });
+                    this.setState({ minor: "No Minor" });
+                    this.setState({ inputMinor: 0 });
                 }
                 else
                 {
-                    this.setState({ minor: res.data["minor"][0] });
-
+                    this.setState({ minor: "Computer Science" });
+                    this.setState({ inputMinor: 24768 });
                 }
                 
             }
