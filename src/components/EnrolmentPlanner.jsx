@@ -18,24 +18,25 @@ class EnrolmentPlanner extends React.Component {
 
     componentDidMount() {
         this.fetchSemesterPlan(2021, "fall");
+        localStorage.setItem("currentSemesterDisplay", "Fall 2021");
     }
 
     //End point 9
     handleChange(event) {
-        const currentSem = event.target.value;
+        const currentSemesterDisplay = event.target.value;
         
         let year = "", term = "";
-        if (currentSem === "Fall 2021") {
+        if (currentSemesterDisplay === "Fall 2021") {
             year = 2021;
             term = "fall";
         }
 
-        else if (currentSem === "Winter 2022") {
+        else if (currentSemesterDisplay === "Winter 2022") {
             year = 2022;
             term = "winter";
         }
 
-        else if (currentSem === "Spring 2022") {
+        else if (currentSemesterDisplay === "Spring 2022") {
             year = 2022;
             term = "spring";
         }
@@ -44,6 +45,8 @@ class EnrolmentPlanner extends React.Component {
             year = 2022;
             term = "summer";
         }
+
+        localStorage.setItem("currentSemesterDisplay", currentSemesterDisplay);
 
         console.log(year, term);
         this.fetchSemesterPlan(year, term);

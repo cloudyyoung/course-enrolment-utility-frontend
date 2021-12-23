@@ -16,6 +16,7 @@ class Tree extends React.Component {
             courses: [],
             isModalActive: false,
             currentCourse: {},
+            currentSemesterDisplay: "",
         };
 
         this.onNodeDragStart = this.onNodeDragStart.bind(this);
@@ -157,6 +158,10 @@ class Tree extends React.Component {
         let course_node = element.data;
         let course_id = course_node.course_id;
 
+        this.setState({
+            currentSemesterDisplay: localStorage.getItem("currentSemesterDisplay"),
+        });
+
         axios.get("/api/course/" + course_id)
             .then(res => {
                 if (res.status !== 200) {
@@ -241,7 +246,7 @@ class Tree extends React.Component {
                         }
                     </ModalBody>
                     <ModalFooter>
-                        <button className="button is-primary">Add to Semester</button>
+                        <button className="button is-primary">Add to { this.state.currentSemesterDisplay }</button>
                     </ModalFooter>
                 </Modal>
             </ReactFlow>
