@@ -66,6 +66,32 @@ class Account extends React.Component {
         return (
             <div className="container is-max-desktop" style={{ "max-width": "20rem" }}>
                 <header>
+                    <h1 className="is-size-3 has-text-centered">Major, Minor and Concentration</h1>
+                </header>
+
+                <div className="form">
+                    <div id="username" className="field">
+                        <label className="label">New password</label>
+                        <div className="control">
+                            <input id="new_password" name="new_password" type="password" className="input" value={this.state.newPassword} onChange={this.handleNewPasswordChange} />
+                        </div>
+                    </div>
+
+                    <section id="password" className="field">
+                        <label className="label">Confirm new password</label>
+                        <div className="control">
+                            <input id="confirm_new_password" name="confirm_new_password" type="password" className="input" value={this.state.confirmNewPassword} onChange={this.handleConfirmNewPasswordChange} />
+                        </div>
+                    </section>
+
+                    <div id="submit">
+                        <button className="button is-primary" onClick={this.submitChangePassword}>Change Password</button>
+                    </div>
+                </div>
+
+                <div style={{ "height": "4rem" }}></div>
+
+                <header>
                     <h1 className="is-size-3 has-text-centered">Change Password</h1>
                 </header>
 
