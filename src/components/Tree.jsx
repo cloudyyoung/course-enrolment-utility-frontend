@@ -189,22 +189,47 @@ class Tree extends React.Component {
                 
                 <Modal isActive={this.state.isModalActive} onClose={this.onModalClose} title={ this.state.currentCourse.code + " " +  this.state.currentCourse.number }>
                     <ModalBody>
-                        <p>Topic: {this.state.currentCourse.topic}</p>
-                        <p>Description: {this.state.currentCourse.description}</p>
-                        {
-                            this.state.currentCourse.prerequisites != null &&
-                            <p className="description">Prerequisite(s): {this.removeHtmlTags(this.state.currentCourse.prerequisites)}</p>
-                        }
-                        {
-                            this.state.currentCourse.antirequisites != null &&
-                            <p className="description">Antirequisite(s): {this.removeHtmlTags(this.state.currentCourse.antirequisites)}</p>
-                        }
-                        {
-                            this.state.currentCourse.corequisites != null &&
-                            <p className="description">Corequisite(s): {this.removeHtmlTags(this.state.currentCourse.corequisites)}</p>
-                        }
+                        <p className="title is-6">{this.state.currentCourse.topic}</p>
+                        <p className="">{this.state.currentCourse.description}</p>
+
+                        <div style={{ marginBottom: 24 }}></div>
+                        
+                        <div className="table-container">
+                            <table className="table is-fullwidth">
+                                <thead>
+                                    <tr>
+                                        <th>Requisite</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {
+                                        this.state.currentCourse.prerequisites != null &&
+                                    <tr>
+                                        <td>Prerequisite(s)</td>
+                                        <td>{this.removeHtmlTags(this.state.currentCourse.prerequisites)}</td>
+                                    </tr>
+                                    }
+                                    {
+                                        this.state.currentCourse.antirequisites != null &&
+                                    <tr>
+                                        <td>Antirequisite(s)</td>
+                                        <td>{this.removeHtmlTags(this.state.currentCourse.antirequisites)}</td>
+                                    </tr>
+                                    }
+                                    {
+                                        this.state.currentCourse.corequisites != null &&
+                                    <tr>
+                                        <td>Corequisite(s)</td>
+                                        <td>{this.removeHtmlTags(this.state.currentCourse.corequisites)}</td>
+                                    </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
                         <p>{this.state.currentCourse.no_gpa === true ? "This course is not included in GPA." : ""}</p>
-                        <p>{this.state.currentCourse.repeat === true ? "This course may be repeated for credit." : "" }</p>
+                        <p>{this.state.currentCourse.repeat === true ? "This course may be repeated for credit." : ""}</p>
                     </ModalBody>
                 </Modal>
             </ReactFlow>
