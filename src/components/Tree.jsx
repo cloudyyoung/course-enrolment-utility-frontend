@@ -1,7 +1,9 @@
 import React from "react";
 import ReactFlow from "react-flow-renderer";
 import axios from "axios";
+
 import CourseNode from "./CourseNode";
+import Modal, { ModalBody } from "./Modal";
 
 class Tree extends React.Component {
     constructor(props) {
@@ -12,7 +14,12 @@ class Tree extends React.Component {
             },
             elements: [],
             courses: [],
+            isModalActive: false,
         };
+
+        this.onNodeDragStart = this.onNodeDragStart.bind(this);
+        this.onElementClick = this.onElementClick.bind(this);
+        this.onModalClose = this.onModalClose.bind(this);
     }
 
     componentDidMount() {
@@ -146,16 +153,27 @@ class Tree extends React.Component {
     }
 
     onElementClick(e) {
-        console.log(e);
-        console.log("element click");
+        this.setState({ isModalActive: true });
+        console.log("element click", this.state.isModalActive);
+    }
+
+    onModalClose() {
+        console.log("close modal");
+        this.setState({ isModalActive: false });
     }
 
     render() {
         return (
             <ReactFlow elements={this.state.elements} nodeTypes={this.state.nodeTypes}
                 nodesDraggable={false} onNodeDragStart={this.onNodeDragStart} onElementClick={this.onElementClick}
-                elementsSelectable={true}
-            />
+                elementsSelectable={true}>
+                
+                <Modal isActive={this.state.isModalActive} onClose={this.onModalClose} title="CPSC 203">
+                    <ModalBody>
+                        Topic: 
+                    </ModalBody>
+                </Modal>
+            </ReactFlow>
         );
     }
 }
